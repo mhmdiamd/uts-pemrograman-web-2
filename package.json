@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run test:coverage && mkdir -p dist/tests dist/coverage && cp -r html/* dist/tests/ && cp -r coverage/* dist/coverage/",
+    "build": "vite build && npm run test:coverage && mkdir -p dist/tests && cp -r html/* dist/tests/ && cp -r html/coverage dist/coverage",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
