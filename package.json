@@ -12,9 +12,9 @@
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "test:selenium": "node tests/selenium/login.e2e.cjs",
-    "test:e2e": "mocha tests/selenium/full-suite.e2e.cjs --reporter mochawesome --reporter-options reportDir=tests/selenium/reports,reportFilename=index",
+    "test:e2e": "mocha tests/selenium/full-suite.e2e.cjs --reporter mochawesome --reporter-options reportDir=public/e2e,reportFilename=index",
     "test:e2e:prod": "APP_URL=https://uts-pemrograman-web-2-dslh.vercel.app/ npm run test:e2e",
-    "test:e2e:ui": "npm run test:e2e && open tests/selenium/reports/index.html"
+    "test:e2e:ui": "npm run test:e2e && open public/e2e/index.html"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
