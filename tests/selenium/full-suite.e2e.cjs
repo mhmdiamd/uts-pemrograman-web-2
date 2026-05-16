@@ -18,7 +18,7 @@ describe('Selenium E2E Test Suite - Tugas Testing QA', function() {
 
     before(async () => {
         let options = new chrome.Options();
-        // options.addArguments('--headless'); // Disabled to allow live viewing
+        options.addArguments('--headless'); // Temporarily enabled
         options.addArguments('--window-size=1200,800'); 
         options.addArguments('--no-sandbox');
         options.addArguments('--disable-dev-shm-usage');
@@ -74,7 +74,9 @@ describe('Selenium E2E Test Suite - Tugas Testing QA', function() {
         before(async () => await driver.get(APP_URL));
 
         it('1. should show login page title by default', async () => {
-            let title = await driver.findElement(By.css('.auth-header h2')).getText();
+            let titleEl = await driver.wait(until.elementLocated(By.css('.auth-header h2')), 5000);
+            await driver.wait(async () => (await titleEl.getText()).length > 0, 2000);
+            let title = await titleEl.getText();
             assert.strictEqual(title, 'Masuk');
         });
 
@@ -351,7 +353,7 @@ describe('Selenium E2E Test Suite - Tugas Testing QA', function() {
         it('30. should show correct credits in footer', async () => {
             let footer = await driver.wait(until.elementLocated(By.className('footer')), 5000);
             let text = await footer.getText();
-            assert.ok(text.includes('Muhamad Ilham & Oktaviyanus'));
+            assert.ok(text.includes('Muhamad Ilham & Oktavianus'));
         });
 
         it('31. should perform successful logout and clear session', async () => {
