@@ -11,7 +11,7 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
-    "test:selenium": "node tests/selenium/login.test.js"
+    "test:selenium": "node tests/selenium/login.e2e.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -39,6 +39,8 @@
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.58.2",
     "vite": "^8.0.10",
-    "vitest": "^4.1.6"
+    "vitest": "^4.1.6",
+    "selenium-webdriver": "^4.20.0",
+    "chromedriver": "^133.0.0"
   }
 }

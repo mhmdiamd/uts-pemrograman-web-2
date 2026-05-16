@@ -10,6 +10,7 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/test/setup.ts',
     reporters: ['default', 'html'],
+    exclude: ['node_modules', 'dist', '.idea', '.git', '.cache', 'tests/selenium/**'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
