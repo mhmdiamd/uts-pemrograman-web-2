@@ -96,7 +96,7 @@ const App: React.FC = () => {
       </main>
       
       <footer className="footer animate-in">
-        <p>Created by <strong>Muhamad Ilham & Oktavianus</strong></p>
+        <p>Created by <strong>Muhamad Ilham & Oktaviyanus</strong></p>
         <p>Tugas Testing & QA | Kelas : 07TPLE001</p>
         <p style={{ marginTop: '0.5rem', opacity: 0.6 }}>&copy; 2026 Tugas Testing QA</p>
       </footer>

@@ -24,8 +24,9 @@ async function runTest() {
         console.log('--- Starting Selenium Test ---');
         
         // 2. Navigate to App
-        console.log('Navigating to http://localhost:5173...');
-        await driver.get('http://localhost:5173');
+        const APP_URL = process.env.APP_URL || 'http://localhost:5173';
+        console.log(`Navigating to ${APP_URL}...`);
+        await driver.get(APP_URL);
 
         // 3. Login Test
         console.log('Step 1: Performing Login...');

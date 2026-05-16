@@ -10,6 +10,6 @@ interface Props {
 export const NavBar: React.FC<Props> = ({ user, onLogout }) => (
   <nav className="nav-bar animate-in">
     <UserProfile user={user} />
-    <button onClick={onLogout} className="btn btn-secondary" style={{ flex: 'none', padding: '0.5rem 1rem' }}>KELUAR</button>
+    <button onClick={onLogout} className="btn btn-secondary logout-btn" style={{ flex: 'none', padding: '0.5rem 1rem' }}>KELUAR</button>
   </nav>
 );
