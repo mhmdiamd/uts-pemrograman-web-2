@@ -29,9 +29,9 @@ async function runTest() {
 
         // 3. Login Test
         console.log('Step 1: Performing Login...');
-        await driver.wait(until.elementLocated(By.name('username')), 10000);
-        await driver.findElement(By.name('username')).sendKeys('admin');
-        await driver.findElement(By.name('password')).sendKeys('admin123', Key.RETURN);
+        await driver.wait(until.elementLocated(By.id('username')), 10000);
+        await driver.findElement(By.id('username')).sendKeys('admin');
+        await driver.findElement(By.id('password')).sendKeys('admin123', Key.RETURN);
 
         // Wait for dashboard (check for header change)
         await driver.wait(until.elementLocated(By.css('header p')), 10000);
