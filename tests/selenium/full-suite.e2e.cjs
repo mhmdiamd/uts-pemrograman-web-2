@@ -18,7 +18,7 @@ describe('Selenium E2E Test Suite - Tugas Testing QA', function() {
 
     before(async () => {
         let options = new chrome.Options();
-        options.addArguments('--headless'); // Temporarily enabled
+        // options.addArguments('--headless'); // Disabled to allow live viewing
         options.addArguments('--window-size=1200,800'); 
         options.addArguments('--no-sandbox');
         options.addArguments('--disable-dev-shm-usage');
@@ -353,7 +353,7 @@ describe('Selenium E2E Test Suite - Tugas Testing QA', function() {
         it('30. should show correct credits in footer', async () => {
             let footer = await driver.wait(until.elementLocated(By.className('footer')), 5000);
             let text = await footer.getText();
-            assert.ok(text.includes('Muhamad Ilham & Oktavianus'));
+            assert.ok(text.includes('Muhamad Ilham & Oktaviyanus'));
         });
 
         it('31. should perform successful logout and clear session', async () => {
