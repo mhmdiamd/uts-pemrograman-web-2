@@ -35,13 +35,21 @@ async function runTest() {
 
         // Wait for dashboard (check for header change)
         await driver.wait(until.elementLocated(By.css('header p')), 10000);
-        let statusText = await driver.findElement(By.css('header p')).getText();
+        let headerElement = await driver.findElement(By.css('header p'));
+        
+        // Wait until the text actually updates to the dashboard title
+        await driver.wait(async () => {
+            let text = await headerElement.getText();
+            return text.includes('Manajemen Pendaftaran Mahasiswa');
+        }, 10000, 'Timed out waiting for dashboard header text');
+
+        let statusText = await headerElement.getText();
         console.log('Current Page Status:', statusText);
 
         if (statusText.includes('Manajemen Pendaftaran Mahasiswa')) {
             console.log('✅ Login Successful');
         } else {
-            throw new Error('❌ Login Failed: Unexpected header text');
+            throw new Error(`❌ Login Failed: Unexpected header text. Got: "${statusText}"`);
         }
 
         // 4. Add Student Test
@@ -73,7 +81,7 @@ async function runTest() {
         // 6. Delete Student Test
         console.log('Step 4: Testing delete functionality...');
         // Find the delete button for our student (it's in the same row)
-        let deleteBtn = await driver.findElement(By.xpath("//tr[td[contains(text(), 'Selenium Test Student')]]//button[contains(@class, 'btn-danger') or contains(text(), 'Hapus')]"));
+        let deleteBtn = await driver.findElement(By.xpath("//tr[td[contains(text(), 'Selenium Test Student')]]//button[contains(@class, 'btn-icon-delete')]"));
         await deleteBtn.click();
 
         // Handle Alert
