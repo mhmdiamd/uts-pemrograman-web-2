@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run test:coverage && rm -rf dist/tests dist/coverage && mkdir -p dist/tests && cp -r html/* dist/tests/ && cp -r html/coverage dist/coverage",
+    "build": "vite build && npm run test:coverage && rm -rf dist/tests dist/coverage dist/e2e && mkdir -p dist/tests dist/e2e && cp -r html/* dist/tests/ && cp -r html/coverage dist/coverage && (cp -r public/e2e/* dist/e2e/ || true)",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
