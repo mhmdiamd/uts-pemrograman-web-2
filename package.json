@@ -11,7 +11,7 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
-    "test:selenium": "node tests/selenium/login.e2e.js"
+    "test:selenium": "node tests/selenium/login.e2e.cjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -31,16 +31,16 @@
     "@vitejs/plugin-react": "^6.0.1",
     "@vitest/coverage-v8": "^4.1.6",
     "@vitest/ui": "^4.1.6",
+    "chromedriver": "^148.0.1",
     "eslint": "^10.2.1",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.5.0",
     "jsdom": "^29.1.1",
+    "selenium-webdriver": "^4.44.0",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.58.2",
     "vite": "^8.0.10",
-    "vitest": "^4.1.6",
-    "selenium-webdriver": "^4.20.0",
-    "chromedriver": "^133.0.0"
+    "vitest": "^4.1.6"
   }
 }
