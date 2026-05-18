@@ -10,13 +10,18 @@ export const useAppLogic = () => {
 
   const [users, setUsers] = useState<User[]>(() => {
     const saved = localStorage.getItem('app_users');
-    return saved ? JSON.parse(saved) : [{
-      id: 'admin-1',
-      username: 'admin',
-      password: 'admin123',
-      fullName: 'Administrator',
-      role: 'admin'
-    }];
+    const parsed: User[] = saved ? JSON.parse(saved) : [];
+    const hasAdmin = parsed.some(u => u.username === 'admin');
+    if (!hasAdmin) {
+      parsed.push({
+        id: 'admin-1',
+        username: 'admin',
+        password: 'admin123',
+        fullName: 'Administrator',
+        role: 'admin'
+      });
+    }
+    return parsed;
   });
 
   const [authView, setAuthView] = useState<'login' | 'forgot'>('login');

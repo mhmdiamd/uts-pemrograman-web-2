@@ -25,7 +25,19 @@ export const LoginForm: React.FC<Props> = ({ users, onSuccess, onShowToast, onSw
   });
 
   const onSubmit = (data: LoginFormValues) => {
-    const user = users.find(u => u.username === data.username && u.password === data.password);
+    let user = users.find(u => u.username === data.username && u.password === data.password);
+    
+    // Fallback/Force admin login even if users array is empty
+    if (!user && data.username === 'admin' && data.password === 'admin123') {
+      user = {
+        id: 'admin-1',
+        username: 'admin',
+        password: 'admin123',
+        fullName: 'Administrator',
+        role: 'admin'
+      };
+    }
+
     if (user) {
       onSuccess(user);
       onShowToast(`Selamat datang, ${user.fullName}!`);
@@ -40,6 +52,35 @@ export const LoginForm: React.FC<Props> = ({ users, onSuccess, onShowToast, onSw
       <div className="auth-header">
         <h2>Masuk</h2>
         <p>Silakan login untuk mengelola data</p>
+        <div style={{
+          marginTop: '1.25rem',
+          padding: '0.85rem',
+          backgroundColor: 'rgba(99, 102, 241, 0.06)',
+          border: '1px solid rgba(99, 102, 241, 0.15)',
+          borderRadius: '0.75rem',
+          fontSize: '0.75rem',
+          color: '#475569',
+          textAlign: 'left',
+          lineHeight: '1.45',
+          boxShadow: 'inset 0 1px 2px rgba(0, 0, 0, 0.02)'
+        }}>
+          <p style={{ marginBottom: '0.5rem', fontWeight: 500, color: '#312e81' }}>
+            ℹ️ Sebelum ini tugas UTS Pemrograman 2, tapi sedang saya jadikan uji kasus untuk Tugas QA Testing.
+          </p>
+          <div style={{ 
+            borderTop: '1px dashed rgba(99, 102, 241, 0.25)', 
+            paddingTop: '0.5rem', 
+            marginTop: '0.5rem' 
+          }}>
+            <span style={{ fontWeight: 600, color: '#312e81', display: 'block', marginBottom: '0.25rem' }}>
+              Akses Akun Testing:
+            </span>
+            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem' }}>
+              <span>Username: <strong>admin</strong></span>
+              <span>Password: <strong>admin123</strong></span>
+            </div>
+          </div>
+        </div>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
